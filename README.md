@@ -44,15 +44,15 @@ Personal portfolio showcasing 17+ projects across AI/ML, biomedical signal proce
 <table>
   <tr>
     <td><img src="assets/images/screenshots/hero.PNG" alt="Hero" width="400"/></td>
-    <td><img src="assets/images/screenshots/projects.png" alt="Projects" width="400"/></td>
+    <td><img src="assets/images/screenshots/projects.PNG" alt="Projects" width="400"/></td>
   </tr>
   <tr>
     <td align="center"><em>Hero Section</em></td>
     <td align="center"><em>Projects Grid</em></td>
   </tr>
   <tr>
-    <td><img src="assets/images/screenshots/skills.png" alt="Skills" width="400"/></td>
-    <td><img src="assets/images/screenshots/contact.png" alt="Contact" width="400"/></td>
+    <td><img src="assets/images/screenshots/skills.PNG" alt="Skills" width="400"/></td>
+    <td><img src="assets/images/screenshots/contact.PNG" alt="Contact" width="400"/></td>
   </tr>
   <tr>
     <td align="center"><em>Skills</em></td>

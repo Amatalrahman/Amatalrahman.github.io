@@ -1,112 +1,86 @@
-# Portfolio
+# Amatalrahman Sayed — Portfolio
 
-## Folder Structure
+> AI & Biomedical Engineering portfolio — built from scratch with HTML, CSS & JavaScript.
 
+[![Live Site](https://img.shields.io/badge/Live%20Site-amatalrahman.github.io-e8172d?style=flat-square)](https://amatalrahman.github.io)
+[![GitHub](https://img.shields.io/badge/GitHub-Amatalrahman-181717?style=flat-square&logo=github)](https://github.com/Amatalrahman)
+
+---
+
+## Overview
+
+Personal portfolio showcasing 17+ projects across AI/ML, biomedical signal processing, medical imaging, CFD simulation, 3D modeling, and data visualization.
+
+---
+
+## Tech Stack
+
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+
+- No frameworks — fully custom
+- Canvas API for animated particle background
+- Responsive design (mobile-friendly)
+- Editable content via `contenteditable`
+
+---
+
+## Sections
+
+| # | Section | Description |
+|---|---------|-------------|
+| 01 | About | Background, education & contact details |
+| 02 | Skills | Tech stack across 6 domains |
+| 03 | Projects | 17 projects with media galleries & filters |
+| 04 | Experience | Training programs & leadership roles |
+| 05 | Certificates | 6 verified credentials |
+| 06 | Contact | Email, LinkedIn, GitHub |
+
+---
+
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="assets/images/screenshots/hero.png" alt="Hero" width="400"/></td>
+    <td><img src="assets/images/screenshots/projects.png" alt="Projects" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Hero Section</em></td>
+    <td align="center"><em>Projects Grid</em></td>
+  </tr>
+  <tr>
+    <td><img src="assets/images/screenshots/skills.png" alt="Skills" width="400"/></td>
+    <td><img src="assets/images/screenshots/contact.png" alt="Contact" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Skills</em></td>
+    <td align="center"><em>Contact</em></td>
+  </tr>
+</table>
+
+---
+
+## Project Domains
+
+- **AI / ML** — Brain tumor classifier, car price prediction, ECG classification
+- **Signal Processing** — Multi-domain signal viewer platform, Parkinson's telemonitoring
+- **Medical Imaging** — Multi-planar viewer, image enhancer, organ classification
+- **CFD Simulation** — Artery stenosis analysis, bio-flow regime analyzer
+- **3D Modeling** — Anatomy puzzle game, neuron model, endoscopy room
+- **Data Visualization** — COVID-19 interactive dashboard
+
+---
+
+## Contact
+
+**Email** — amatalrahmansayed@gmail.com  
+**LinkedIn** — [linkedin.com/in/amatalrahman-sayed](https://www.linkedin.com/in/amatalrahman-sayed)  
+**GitHub** — [github.com/Amatalrahman](https://github.com/Amatalrahman)
+
+---
+
+<p align="center">Cairo University · Biomedical Engineering · Class of 2028</p>
 ```
-portfolio/
-│
-├── index.html                               ← Your entire website
-│
-├── assets/
-│   └── images/
-│       ├── profile/
-│       │   └── photo.jpg                    ← Your profile photo here
-│       │
-│       └── projects/
-│           ├── p01-signal-viewer/
-│           ├── p02-brain-tumor-classifier/
-│           ├── p03-artery-stenosis-cfd/
-│           ├── p04-anatomy-puzzle/
-│           ├── p05-medical-image-viewer/
-│           ├── p06-football-tracking/
-│           ├── p07-ecg-dtw/
-│           ├── p08-perisylvian-fmri/
-│           ├── p09-bio-flow-regime/
-│           ├── p10-covid-dashboard/
-│           ├── p11-car-price-ai/
-│           ├── p12-endoscope-room/
-│           ├── p13-neuron-model/
-│           ├── p14-biological-scaffold/
-│           ├── p15-medical-image-classification/
-│           ├── p16-brain-tumor-app/
-│           └── p17-parkinsons-voice/
-└── README.md
-```
 
----
-
-## Step 1 — Add Profile Photo
-
-1. Copy your photo into `assets/images/profile/`
-2. Open `index.html`, find: `const PROFILE_PHOTO = '';`
-3. Change to: `const PROFILE_PHOTO = 'assets/images/profile/photo.jpg';`
-
----
-
-## Step 2 — Add Project Images
-
-Copy images into the matching subfolder, then edit `MEDIA_DATA` in `index.html`:
-
-```js
-10: [
-  {type: 'img', src: 'assets/images/projects/p10-covid-dashboard/screenshot.png'},
-  {type: 'img', src: 'assets/images/projects/p10-covid-dashboard/map.jpg'},
-  {type: 'yt',  vid: 'YouTubeVideoID'},
-],
-```
-
-Supported image formats: .jpg .jpeg .png .webp .gif
-
----
-
-## Step 3 — Add YouTube Videos
-
-Get the video ID from the YouTube URL (the part after `?v=`):
-`https://youtube.com/watch?v=` **dQw4w9WgXcQ**
-
-```js
-{type: 'yt', vid: 'dQw4w9WgXcQ'}
-```
-
----
-
-## Step 4 — Deploy to Netlify (Free, 1 minute)
-
-1. Go to https://app.netlify.com/drop
-2. Drag the entire **`portfolio` folder** onto the page
-3. Get a live URL instantly
-
-> Always drag the whole **folder**, never just `index.html` alone.
-
----
-
-## Step 5 — Deploy to GitHub Pages
-
-1. New repository → `portfolio` → Public
-2. Upload all files including the `assets/` folder
-3. Settings → Pages → main branch → / (root) → Save
-4. URL: `https://yourusername.github.io/portfolio`
-
----
-
-## Project Folder Reference
-
-| # | Folder | Project Name |
-|---|--------|--------------|
-| 1 | p01-signal-viewer | Signal Viewer Platform |
-| 2 | p02-brain-tumor-classifier | Brain Tumor Classifier |
-| 3 | p03-artery-stenosis-cfd | Artery Stenosis CFD |
-| 4 | p04-anatomy-puzzle | 3D Anatomy Puzzle Game |
-| 5 | p05-medical-image-viewer | Multi-Planar Image Viewer |
-| 6 | p06-football-tracking | Football Tracking + Heatmap |
-| 7 | p07-ecg-dtw | ECG Classification DTW |
-| 8 | p08-perisylvian-fmri | Perisylvian Network fMRI |
-| 9 | p09-bio-flow-regime | Bio-Flow Regime Analyzer |
-| 10 | p10-covid-dashboard | COVID-19 Dashboard |
-| 11 | p11-car-price-ai | AutoValuate Car Price AI |
-| 12 | p12-endoscope-room | Endoscope Room 3D Model |
-| 13 | p13-neuron-model | Neuron 3D Model |
-| 14 | p14-biological-scaffold | Biological Scaffold 3D |
-| 15 | p15-medical-image-classification | Medical Image Classification |
-| 16 | p16-brain-tumor-app | Brain Tumor App |
-| 17 | p17-parkinsons-voice | Parkinson's Voice Telemonitoring |

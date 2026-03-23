@@ -43,7 +43,7 @@ Personal portfolio showcasing 17+ projects across AI/ML, biomedical signal proce
 
 <table>
   <tr>
-    <td><img src="assets/images/screenshots/hero.png" alt="Hero" width="400"/></td>
+    <td><img src="assets/images/screenshots/hero.PNG" alt="Hero" width="400"/></td>
     <td><img src="assets/images/screenshots/projects.png" alt="Projects" width="400"/></td>
   </tr>
   <tr>

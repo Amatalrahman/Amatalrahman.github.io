@@ -82,5 +82,5 @@ Personal portfolio showcasing 17+ projects across AI/ML, biomedical signal proce
 ---
 
 <p align="center">Cairo University · Biomedical Engineering · Class of 2028</p>
-```
+
 

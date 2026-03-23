@@ -1,4 +1,4 @@
-# Amatalrahman Sayed — Portfolio
+# Portfolio
 
 ## Folder Structure
 

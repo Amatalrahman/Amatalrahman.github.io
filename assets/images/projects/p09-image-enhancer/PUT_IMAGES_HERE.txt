@@ -1,0 +1,6 @@
+09 - Image Enhancer Tool
+========================
+
+Drop project images here.
+Then in index.html -> MEDIA_DATA -> key 9, add:
+  {type:'img', src:'assets/images/projects/p09-image-enhancer/yourfile.jpg'}

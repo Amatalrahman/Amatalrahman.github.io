@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amatalrahman Sayed — AI & Biomedical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --black:#070707;--off-black:#0e0e0e;--panel:#141414;--panel2:#1a1a1a;
+  --red:#e8172d;--red-dim:rgba(232,23,45,0.13);--red-border:rgba(232,23,45,0.35);
+  --white:#f0ede8;--wdim:rgba(240,237,232,0.55);--wfaint:rgba(240,237,232,0.1);
+  --border:rgba(240,237,232,0.08);
+  --D:'Bebas Neue',sans-serif;--H:'Syne',sans-serif;--M:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+body{background:var(--black);color:var(--white);font-family:var(--H);overflow-x:hidden;cursor:none;}
+input,textarea,select,[contenteditable="true"]{cursor:text !important;}
+a,button,label{cursor:none;}
+
+/* CURSOR */
+.cur{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:transform .15s;}
+.cur-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid rgba(232,23,45,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s var(--ease);}
+
+/* PARTICLES */
+#pc{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.8;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;background:rgba(7,7,7,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--D);font-size:24px;letter-spacing:4px;color:var(--white);text-decoration:none;}
+.nav-logo span{color:var(--red);}
+.nav-tabs{display:flex;gap:0;list-style:none;}
+.nav-tabs a{font-family:var(--M);font-size:12.5px;color:var(--wdim);text-decoration:none;padding:8px 16px;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-tabs a::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--red);transform:scaleX(0);transition:transform .25s;}
+.nav-tabs a:hover,.nav-tabs a.act{color:var(--white);}
+.nav-tabs a:hover::after,.nav-tabs a.act::after{transform:scaleX(1);}
+.nav-hire{font-family:var(--M);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;background:var(--red);color:var(--white);text-decoration:none;transition:all .25s;}
+.nav-hire:hover{background:#b81020;transform:translateY(-1px);}
+
+/* ══ HERO ══ */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;z-index:1;overflow:hidden;}
+.hero-l{display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 110px 64px;border-right:1px solid var(--border);position:relative;}
+.hero-eyebrow{font-family:var(--M);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:22px;display:flex;align-items:center;gap:10px;animation:fu .8s .2s both;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);}
+.hero-name-wrap{animation:fu .8s .35s both;margin-bottom:6px;}
+.hn1{font-family:var(--D);font-size:clamp(70px,10vw,130px);line-height:.88;letter-spacing:5px;color:var(--white);display:block;}
+.hn2{font-family:var(--D);font-size:clamp(70px,10vw,130px);line-height:.88;letter-spacing:5px;color:transparent;-webkit-text-stroke:1.5px rgba(240,237,232,.3);display:block;}
+.hero-role{font-family:var(--M);font-size:14px;color:var(--wdim);letter-spacing:.06em;margin-top:26px;margin-bottom:36px;line-height:1.9;max-width:380px;animation:fu .8s .5s both;}
+.hero-role strong{color:var(--white);font-weight:400;}
+.hero-btns{display:flex;gap:12px;animation:fu .8s .65s both;}
+.btn-r{padding:13px 34px;background:var(--red);color:var(--white);font-family:var(--M);font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .25s;}
+.btn-r:hover{background:#b81020;transform:translateY(-2px);box-shadow:0 10px 28px rgba(232,23,45,.3);}
+.btn-o{padding:13px 34px;border:1px solid var(--red-border);color:var(--wdim);font-family:var(--M);font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .25s;}
+.btn-o:hover{border-color:var(--red);color:var(--white);}
+.scroll-ind{position:absolute;bottom:48px;left:64px;display:flex;align-items:center;gap:10px;font-family:var(--M);font-size:11px;color:rgba(240,237,232,.25);letter-spacing:.18em;text-transform:uppercase;animation:fu .8s 1s both;}
+.scroll-line{width:36px;height:1px;background:linear-gradient(to right,transparent,var(--wdim));animation:sp 2s infinite;}
+@keyframes sp{0%,100%{opacity:.25}50%{opacity:.9}}
+
+/* hero right */
+.hero-r{display:flex;align-items:center;justify-content:center;background:var(--off-black);position:relative;overflow:hidden;}
+.hero-bg-txt{position:absolute;font-family:var(--D);font-size:clamp(120px,20vw,240px);color:rgba(240,237,232,.025);letter-spacing:12px;white-space:nowrap;bottom:-10px;right:-30px;user-select:none;}
+
+/* photo frame */
+.pf-outer{position:relative;width:320px;height:420px;z-index:2;animation:fu .8s .5s both;}
+.pf-circle{position:absolute;width:200px;height:200px;background:var(--red);border-radius:50%;bottom:-24px;right:-24px;z-index:1;}
+.pf{position:absolute;inset:0;z-index:2;border:1px solid rgba(240,237,232,.12);overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .25s;}
+.pf:hover{border-color:var(--red-border);}
+.pf img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.pf input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pf-hint{display:flex;flex-direction:column;align-items:center;gap:7px;pointer-events:none;z-index:1;}
+.pf-hint-icon{font-size:32px;opacity:.18;}
+.pf-hint-txt{font-family:var(--M);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,232,.22);}
+/* corner brackets */
+.pf-outer::before,.pf-outer::after{content:'';position:absolute;width:22px;height:22px;z-index:5;border-color:var(--red);border-style:solid;}
+.pf-outer::before{top:-5px;left:-5px;border-width:2px 0 0 2px;}
+.pf-outer::after{bottom:-5px;right:-5px;border-width:0 2px 2px 0;}
+
+/* stats bar */
+.stats-bar{position:absolute;bottom:0;left:0;right:0;display:flex;border-top:1px solid var(--border);z-index:3;}
+.stat{flex:1;padding:20px 30px;border-right:1px solid var(--border);animation:fu .8s .8s both;}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:var(--D);font-size:36px;letter-spacing:2px;line-height:1;color:var(--white);}
+.stat-n span{color:var(--red);}
+.stat-l{font-family:var(--M);font-size:11px;color:var(--wdim);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;}
+
+@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ SHARED SECTION ══ */
+.sec{position:relative;z-index:1;}
+.sec-head{display:flex;align-items:flex-start;justify-content:space-between;padding:80px 64px 56px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.sec-head-bg{position:absolute;right:40px;top:50%;transform:translateY(-50%);font-family:var(--D);font-size:130px;color:rgba(240,237,232,.028);letter-spacing:8px;pointer-events:none;user-select:none;}
+.sec-num{font-family:var(--M);font-size:13px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:var(--D);font-size:clamp(50px,7vw,92px);letter-spacing:4px;line-height:.92;color:var(--white);}
+.sec-title .ol{color:transparent;-webkit-text-stroke:1.5px rgba(240,237,232,.28);}
+.sec-desc{max-width:320px;font-family:var(--M);font-size:13px;color:var(--wdim);line-height:1.9;letter-spacing:.04em;align-self:flex-end;}
+
+/* ══ ABOUT ══ */
+#about{background:var(--off-black);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
+.about-col{padding:60px 64px;border-right:1px solid var(--border);}
+.about-col:last-child{border-right:none;}
+.about-col p{font-size:15px;color:var(--wdim);line-height:1.9;margin-bottom:18px;}
+.about-col p strong{color:var(--white);font-weight:600;}
+.about-col p:first-child{font-size:19px;font-weight:700;color:var(--white);line-height:1.5;margin-bottom:24px;}
+.detail-list{list-style:none;margin-top:28px;}
+.detail-list li{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--border);font-family:var(--M);font-size:13px;}
+.detail-list li:last-child{border-bottom:none;}
+.dk{color:var(--red);letter-spacing:.1em;text-transform:uppercase;}
+.dv{color:var(--wdim);}
+
+/* ══ SKILLS ══ */
+#skills{background:var(--black);}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+.sk-block{padding:44px 44px 50px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;transition:background .3s;}
+.sk-block:nth-child(3n){border-right:none;}
+.sk-block:hover{background:var(--panel2);}
+.sk-block::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height .4s var(--ease);}
+.sk-block:hover::before{height:100%;}
+.sk-num{font-family:var(--D);font-size:60px;color:var(--wfaint);line-height:1;margin-bottom:14px;letter-spacing:2px;}
+.sk-title{font-family:var(--D);font-size:24px;letter-spacing:2px;color:var(--white);margin-bottom:18px;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.sk-tag{font-family:var(--M);font-size:12px;padding:5px 11px;border:1px solid var(--border);color:var(--wdim);letter-spacing:.08em;text-transform:uppercase;transition:all .2s;}
+.sk-block:hover .sk-tag{border-color:var(--red-border);color:var(--white);}
+
+/* ══ PROJECTS ══ */
+#projects{background:var(--off-black);}
+.proj-filters{display:flex;padding:0 64px;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.proj-filters::-webkit-scrollbar{display:none;}
+.pf-btn{font-family:var(--M);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:18px 20px;background:none;border:none;color:var(--wdim);cursor:pointer;white-space:nowrap;position:relative;transition:color .2s;}
+.pf-btn::after{content:'';position:absolute;bottom:0;left:20px;right:20px;height:2px;background:var(--red);transform:scaleX(0);transition:transform .25s;}
+.pf-btn.act,.pf-btn:hover{color:var(--white);}
+.pf-btn.act::after{transform:scaleX(1);}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+.pj{border-right:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;display:flex;flex-direction:column;transition:background .3s, border-color .3s;position:relative;}
+.pj::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transition:transform .35s var(--ease);z-index:10;}
+.pj:hover::before{transform:scaleX(1);}
+.pj:hover{background:var(--panel);}
+.pj.hide{display:none;}
+.pj-links{display:flex;gap:14px;flex-wrap:wrap;}
+.pj-img{height:200px;background:var(--panel2);position:relative;overflow:hidden;cursor:pointer;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;}
+.pj-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.pj:hover .pj-img img{transform:scale(1.05);}
+.pj-img input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pj-ph{display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;z-index:1;}
+.pj-ph-i{font-size:28px;opacity:.16;}
+.pj-ph-t{font-family:var(--M);font-size:11px;color:rgba(240,237,232,.18);letter-spacing:.15em;text-transform:uppercase;}
+.pj-cat{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--M);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;background:rgba(7,7,7,.88);backdrop-filter:blur(8px);border:1px solid var(--border);color:var(--wdim);}
+.pj-body{padding:28px 32px;flex:1;display:flex;flex-direction:column;}
+.pj-n{font-family:var(--M);font-size:12px;color:var(--red);letter-spacing:.15em;margin-bottom:8px;}
+.pj-title{font-family:var(--D);font-size:24px;letter-spacing:2px;color:var(--white);line-height:1.1;margin-bottom:12px;}
+.pj-desc{font-family:var(--M);font-size:13px;color:var(--wdim);line-height:1.8;letter-spacing:.03em;flex:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:16px;}
+.pj-tech{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+.pj-tt{font-family:var(--M);font-size:11px;padding:3px 9px;border:1px solid var(--red-border);color:var(--red);letter-spacing:.1em;text-transform:uppercase;}
+.pj-link{font-family:var(--M);font-size:12px;color:var(--wdim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:color .2s;}
+.pj-link:hover{color:var(--red);}
+.pj-link::after{content:'→';}
+
+/* ══ EXPERIENCE ══ */
+#experience{background:var(--black);}
+.tl-grid{display:grid;grid-template-columns:240px 1fr;border-top:1px solid var(--border);}
+.tl-years{border-right:1px solid var(--border);padding:44px 36px;display:flex;flex-direction:column;position:sticky;top:68px;align-self:start;}
+.tl-yr-btn{font-family:var(--D);font-size:36px;letter-spacing:2px;color:var(--wfaint);cursor:pointer;padding:14px 0;background:none;border:none;text-align:left;transition:color .2s;border-bottom:1px solid var(--border);}
+.tl-yr-btn:last-child{border-bottom:none;}
+.tl-yr-btn.act{color:var(--red);}
+.tl-yr-btn:hover{color:var(--white);}
+.tl-entries{padding:0;}
+.tl-entry{padding:52px 60px;border-bottom:1px solid var(--border);display:none;}
+.tl-entry.act{display:block;}
+.tl-date{font-family:var(--M);font-size:13px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;}
+.tl-role{font-family:var(--D);font-size:50px;letter-spacing:3px;line-height:.95;color:var(--white);margin-bottom:7px;}
+.tl-org{font-family:var(--M);font-size:13px;color:var(--wdim);letter-spacing:.07em;margin-bottom:30px;}
+.tl-buls{list-style:none;}
+.tl-buls li{font-family:var(--M);font-size:13px;color:var(--wdim);line-height:1.8;padding:10px 0 10px 22px;position:relative;border-bottom:1px solid var(--border);letter-spacing:.03em;}
+.tl-buls li:last-child{border-bottom:none;}
+.tl-buls li::before{content:'//';position:absolute;left:0;color:var(--red);font-size:12px;top:12px;}
+
+/* ══ CERTS ══ */
+#certificates{background:var(--off-black);}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+.cert-item{padding:38px 44px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:14px;transition:background .3s;position:relative;overflow:hidden;}
+.cert-item:nth-child(3n){border-right:none;}
+.cert-item:hover{background:var(--panel);}
+.cert-icon{width:42px;height:42px;background:var(--red-dim);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cert-icon svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.cert-name{font-family:var(--H);font-size:16px;font-weight:700;color:var(--white);line-height:1.4;}
+.cert-meta{font-family:var(--M);font-size:12px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;}
+.cert-link{display:inline-flex;align-items:center;gap:7px;font-family:var(--M);font-size:11.5px;color:var(--wdim);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;transition:color .2s;border-bottom:1px solid transparent;padding-bottom:1px;width:fit-content;}
+.cert-link:hover{color:var(--red);border-bottom-color:var(--red);}
+.cert-link svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.cert-link-placeholder{font-family:var(--M);font-size:11px;color:rgba(240,237,232,.2);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;}
+
+/* ══ CONTACT ══ */
+#contact{background:var(--black);position:relative;overflow:hidden;}
+.contact-giant{font-family:var(--D);font-size:clamp(70px,13vw,190px);letter-spacing:8px;color:transparent;-webkit-text-stroke:1px rgba(240,237,232,.055);position:absolute;bottom:0;left:0;right:0;text-align:center;line-height:.8;pointer-events:none;user-select:none;}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);position:relative;z-index:2;}
+.contact-col{padding:76px 64px;border-right:1px solid var(--border);}
+.contact-col:last-child{border-right:none;}
+.c-head{font-family:var(--D);font-size:clamp(48px,6.5vw,88px);letter-spacing:4px;line-height:.92;margin-bottom:28px;}
+.c-head .red{color:var(--red);}
+.c-sub{font-family:var(--M);font-size:13px;color:var(--wdim);line-height:1.9;letter-spacing:.04em;margin-bottom:36px;}
+.c-btns{display:flex;gap:12px;}
+.clinks{list-style:none;}
+.clinks li{display:flex;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid var(--border);}
+.clinks li:first-child{border-top:1px solid var(--border);}
+.cl-type{font-family:var(--M);font-size:12px;color:var(--red);letter-spacing:.15em;text-transform:uppercase;width:72px;flex-shrink:0;}
+.clinks a{font-family:var(--M);font-size:14px;color:var(--wdim);text-decoration:none;letter-spacing:.05em;transition:color .2s;}
+.clinks a:hover{color:var(--white);}
+
+/* FOOTER */
+footer{display:flex;justify-content:space-between;align-items:center;padding:22px 64px;border-top:1px solid var(--border);background:var(--black);position:relative;z-index:1;}
+.ft{font-family:var(--M);font-size:11px;color:rgba(240,237,232,.18);letter-spacing:.12em;text-transform:uppercase;}
+
+/* EDIT TOAST */
+.toast{position:fixed;bottom:28px;right:28px;z-index:700;display:flex;align-items:center;gap:9px;padding:13px 20px;background:var(--panel);border:1px solid var(--red-border);font-family:var(--M);font-size:12px;color:var(--wdim);letter-spacing:.1em;text-transform:uppercase;}
+.tdot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.15}}
+
+
+/* ── section triangle canvases ── */
+.sec-canvas-wrap{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:0;}
+.sec-canvas-wrap canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.55;}
+.sec-head{position:relative;}
+.sec-head>*:not(.sec-canvas-wrap){position:relative;z-index:1;}
+
+/* ── project media gallery ── */
+.pj-media{position:relative;height:220px;background:var(--panel2);border-bottom:1px solid var(--border);overflow:hidden;}
+.pj-media-slides{display:flex;height:100%;transition:transform .4s var(--ease);}
+.pj-media-slide{min-width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pj-media-slide img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.pj-media-slide iframe{width:100%;height:100%;border:none;position:absolute;inset:0;}
+.pj-media-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:100%;width:100%;}
+.pj-media-nav{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:3;}
+.pj-media-dot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,232,.25);cursor:pointer;transition:background .2s;}
+.pj-media-dot.on{background:var(--red);}
+.pj-media-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(7,7,7,.7);border:1px solid var(--border);color:var(--white);width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:background .2s;backdrop-filter:blur(4px);}
+.pj-media-btn:hover{background:rgba(232,23,45,.5);}
+.pj-media-btn.prev{left:8px;}
+.pj-media-btn.next{right:8px;}
+.pj-media-btn.hide{opacity:0;pointer-events:none;}
+.pj-media-add{position:absolute;bottom:8px;right:8px;z-index:4;display:flex;gap:5px;}
+.pj-media-add-btn{font-family:var(--M);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;background:rgba(7,7,7,.8);border:1px solid var(--border);color:var(--wdim);cursor:pointer;transition:all .2s;backdrop-filter:blur(4px);}
+.pj-media-add-btn:hover{border-color:var(--red);color:var(--white);}
+.pj-media-add-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.pj-cat{position:absolute;top:10px;left:10px;z-index:5;font-family:var(--M);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;background:rgba(7,7,7,.88);backdrop-filter:blur(8px);border:1px solid var(--border);color:var(--wdim);}
+/* yt input modal */
+.yt-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;align-items:center;justify-content:center;}
+.yt-modal.open{display:flex;}
+.yt-box{background:var(--panel);border:1px solid var(--border);padding:32px;width:420px;max-width:92vw;}
+.yt-box h4{font-family:var(--D);font-size:24px;letter-spacing:2px;margin-bottom:16px;color:var(--white);}
+.yt-box input[type=text]{width:100%;background:var(--panel2);border:1px solid var(--border);color:var(--white);font-family:var(--M);font-size:13px;padding:10px 14px;outline:none;margin-bottom:14px;transition:border-color .2s;}
+.yt-box input[type=text]:focus{border-color:var(--red);}
+.yt-box-btns{display:flex;gap:10px;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+
+/* EDITABLE */
+[contenteditable="true"]{outline:none;cursor:text;}
+[contenteditable="true"]:focus{background:rgba(232,23,45,.04);border-radius:2px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px;}.nav-tabs{display:none;}
+  #hero{grid-template-columns:1fr;}.hero-r{display:none;}.hero-l{padding:100px 24px 120px;}
+  .about-grid,.contact-inner,.tl-grid{grid-template-columns:1fr;}
+  .skills-grid,.proj-grid,.certs-grid{grid-template-columns:1fr;}
+  .sec-head{flex-direction:column;gap:16px;padding:48px 24px;}
+  .about-col,.pj-body,.contact-col{padding:36px 24px;}
+  .sk-block,.pj,.cert-item{border-right:none;}
+  .tl-years{position:relative;top:0;border-right:none;border-bottom:1px solid var(--border);}
+  footer{padding:18px 24px;flex-direction:column;gap:8px;}
+  .proj-filters{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="c"></div>
+<div class="cur-ring" id="cr"></div>
+<canvas id="pc"></canvas>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">A<span>.</span>S</a>
+  <ul class="nav-tabs">
+    <li><a href="#about" data-s="about">About</a></li>
+    <li><a href="#skills" data-s="skills">Skills</a></li>
+    <li><a href="#projects" data-s="projects">Projects</a></li>
+    <li><a href="#experience" data-s="experience">Experience</a></li>
+    <li><a href="#certificates" data-s="certificates">Certs</a></li>
+    <li><a href="#contact" data-s="contact">Contact</a></li>
+  </ul>
+  <a href="#" id="nav-hire-btn" class="nav-hire">Hire Me</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-l">
+    <div class="hero-eyebrow">Available for Freelance &nbsp;·&nbsp; Cairo, Egypt</div>
+    <div class="hero-name-wrap">
+      <span class="hn1" contenteditable="true">Amatal</span>
+      <span class="hn2" contenteditable="true">rahman</span>
+    </div>
+    <p class="hero-role" contenteditable="true">
+      <strong>AI & Data Science Developer</strong> — building practical solutions across machine learning, computer vision, signal processing &amp; biomedical engineering.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-r">View Projects</a>
+      <a href="#contact" class="btn-o">Get In Touch</a>
+    </div>
+    <div class="scroll-ind"><div class="scroll-line"></div>Scroll to explore</div>
+  </div>
+
+  <div class="hero-r">
+    <div class="hero-bg-txt">BME</div>
+    <div class="pf-outer">
+      <div class="pf-circle"></div>
+      <div class="pf" id="photoFrame" title="Click to upload photo">
+        <div class="pf-hint" id="pfHint">
+          <svg viewBox="0 0 24 24" style="width:32px;height:32px;stroke:rgba(240,237,232,.2);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span class="pf-hint-txt">Upload Photo</span>
+        </div>
+        <img id="pfImg" src="" style="display:none" alt="Profile">
+        <input type="file" accept="image/*" onchange="upPhoto(event)">
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">20<span>+</span></div><div class="stat-l">Projects</div></div>
+    <div class="stat"><div class="stat-n">98<span>%</span></div><div class="stat-l">NTI Score</div></div>
+    <div class="stat"><div class="stat-n">6<span>+</span></div><div class="stat-l">Certificates</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">Domains</div></div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-about"></canvas></div>
+    <div><div class="sec-num">01 — About</div><h2 class="sec-title">Who<br><span class="ol">I Am</span></h2></div>
+    <p class="sec-desc">Biomedical Engineer. AI Developer. Builder of tools that actually solve problems.</p>
+    <div class="sec-head-bg">ABOUT</div>
+  </div>
+  <div class="about-grid">
+    <div class="about-col rv">
+      <p contenteditable="true">I'm an <strong>AI & Data Science developer</strong> focused on building practical, real-world solutions. My work lives at the intersection of biomedical engineering and intelligent systems.</p>
+      <p contenteditable="true">I've worked across <strong>machine learning, signal processing, computer vision, and simulation</strong> — handling everything from data and modeling to deploying complete, usable tools.</p>
+      <p contenteditable="true">I care about making things that work well, are easy to use, and <strong>actually solve the problem they're built for</strong>.</p>
+    </div>
+    <div class="about-col rv">
+      <ul class="detail-list">
+        <li><span class="dk">Name</span><span class="dv" contenteditable="true">Amatalrahman Sayed</span></li>
+        <li><span class="dk">Degree</span><span class="dv" contenteditable="true">B.Sc. Biomedical Engineering</span></li>
+        <li><span class="dk">University</span><span class="dv" contenteditable="true">Cairo University</span></li>
+        <li><span class="dk">Batch</span><span class="dv" contenteditable="true">2024 – 2028</span></li>
+        <li><span class="dk">IEEE Role</span><span class="dv" contenteditable="true">VP Research & Development — EMBS</span></li>
+        <li><span class="dk">Location</span><span class="dv" contenteditable="true">6th October, Giza, Egypt</span></li>
+        <li><span class="dk">Email</span><span class="dv" id="about-email">amatalrahmansayed&#8203;@gmail.com</span></li>
+        <li><span class="dk">Phone</span><span class="dv" contenteditable="true">01067643500</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-skills"></canvas></div>
+    <div><div class="sec-num">02 — Skills</div><h2 class="sec-title">Tech<br><span class="ol">Stack</span></h2></div>
+    <p class="sec-desc">From raw data to deployed models — tools I use to build end-to-end solutions.</p>
+    <div class="sec-head-bg">SKILLS</div>
+  </div>
+  <div class="skills-grid">
+    <div class="sk-block rv"><div class="sk-num">01</div><div class="sk-title">AI & Data Science</div><div class="sk-tags"><span class="sk-tag">Machine Learning</span><span class="sk-tag">Deep Learning</span><span class="sk-tag">Computer Vision</span><span class="sk-tag">Data Analysis</span><span class="sk-tag">EDA</span><span class="sk-tag">TensorFlow</span><span class="sk-tag">Scikit-learn</span></div></div>
+    <div class="sk-block rv"><div class="sk-num">02</div><div class="sk-title">Programming</div><div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">Java</span><span class="sk-tag">C++</span><span class="sk-tag">MATLAB</span><span class="sk-tag">SQL</span><span class="sk-tag">C#</span><span class="sk-tag">NumPy</span><span class="sk-tag">Pandas</span></div></div>
+    <div class="sk-block rv"><div class="sk-num">03</div><div class="sk-title">Signal & Image</div><div class="sk-tags"><span class="sk-tag">Signal Processing</span><span class="sk-tag">Image Processing</span><span class="sk-tag">ECG / EEG</span><span class="sk-tag">DSP</span><span class="sk-tag">OpenCV</span><span class="sk-tag">PyQt5</span><span class="sk-tag">VTK</span></div></div>
+    <div class="sk-block rv"><div class="sk-num">04</div><div class="sk-title">Simulation & CFD</div><div class="sk-tags"><span class="sk-tag">ANSYS Fluent</span><span class="sk-tag">OpenFOAM</span><span class="sk-tag">OpenSim</span><span class="sk-tag">CFD</span><span class="sk-tag">Biomechanics</span><span class="sk-tag">Meshing</span></div></div>
+    <div class="sk-block rv"><div class="sk-num">05</div><div class="sk-title">3D & Game Dev</div><div class="sk-tags"><span class="sk-tag">Unity</span><span class="sk-tag">Blender</span><span class="sk-tag">3D Modeling</span><span class="sk-tag">Game Development</span><span class="sk-tag">C#</span></div></div>
+    <div class="sk-block rv"><div class="sk-num">06</div><div class="sk-title">Web & Data Apps</div><div class="sk-tags"><span class="sk-tag">HTML/CSS/JS</span><span class="sk-tag">Streamlit</span><span class="sk-tag">Dash</span><span class="sk-tag">Plotly</span><span class="sk-tag">Matplotlib</span><span class="sk-tag">Seaborn</span></div></div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
+<section id="projects" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-projects"></canvas></div>
+    <div><div class="sec-num">03 &#8212; Projects</div><h2 class="sec-title">Selected<br><span class="ol">Work</span></h2></div>
+    <p class="sec-desc">A cross-disciplinary body of work — from brain tumor classifiers to CFD simulations.</p>
+    <div class="sec-head-bg">WORK</div>
+  </div>
+  <div class="proj-filters rv">
+    <button class="pf-btn act" onclick="fp('all',this)">All</button>
+    <button class="pf-btn" onclick="fp('ai',this)">AI / ML</button>
+    <button class="pf-btn" onclick="fp('signal',this)">Signal</button>
+    <button class="pf-btn" onclick="fp('imaging',this)">Imaging</button>
+    <button class="pf-btn" onclick="fp('simulation',this)">Simulation</button>
+    <button class="pf-btn" onclick="fp('3d',this)">3D</button>
+    <button class="pf-btn" onclick="fp('research',this)">Research</button>
+    <button class="pf-btn" onclick="fp('web',this)">Web / Data</button>
+  </div>
+  <div class="proj-grid" id="pg">
+    <div class="pj rv" data-c="signal">
+      <div class="pj-media" id="pjm-1">
+        <div class="pj-media-slides" id="pjms-1">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(1)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(1)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-1"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,1)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(1)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Signal Processing</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 01</div>
+        <h3 class="pj-title" contenteditable="true">Signal Viewer Platform</h3>
+        <p class="pj-desc" contenteditable="true">Full-stack DSP platform across medical, acoustic, financial, and microbiome domains. ECG/EEG AI abnormality detection, Doppler simulation, financial forecasting, and microbiome disease prediction.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">DSP</span><span class="pj-tt">ML</span><span class="pj-tt">Streamlit</span></div>
+        <div class="pj-links"><a href="https://github.com/sbme-tutorials/task01-signal-viewer-sbeg205_spring26_team14" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="simulation">
+      <div class="pj-media" id="pjm-2">
+        <div class="pj-media-slides" id="pjms-2">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(2)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(2)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-2"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,2)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(2)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">CFD Simulation</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 02</div>
+        <h3 class="pj-title" contenteditable="true">Artery Stenosis CFD</h3>
+        <p class="pj-desc" contenteditable="true">Blood flow in the Common Femoral Artery at 0%, 50%, and 75% stenosis using ANSYS Fluent. Compared Newtonian vs Carreau blood models. WSS analysis identifies plaque risk recirculation zones.</p>
+        <div class="pj-tech"><span class="pj-tt">ANSYS Fluent</span><span class="pj-tt">CFD</span><span class="pj-tt">Meshing</span><span class="pj-tt">Biomechanics</span></div>
+        <div class="pj-links"><a href="#" target="_blank" class="pj-link">View Project</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="simulation">
+      <div class="pj-media" id="pjm-3">
+        <div class="pj-media-slides" id="pjms-3">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(3)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(3)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-3"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,3)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(3)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Fluid Simulation</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 03</div>
+        <h3 class="pj-title" contenteditable="true">Bio-Flow Regime Analyzer</h3>
+        <p class="pj-desc" contenteditable="true">Laminar-to-turbulent flow transition analysis for blood and CSF. MATLAB GUI for Reynolds number computation and velocity profile modeling. OpenFOAM lid-driven cavity CFD simulation.</p>
+        <div class="pj-tech"><span class="pj-tt">MATLAB</span><span class="pj-tt">OpenFOAM</span><span class="pj-tt">CFD</span><span class="pj-tt">Fluid Dynamics</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Reynolds-Number-Flow-Regime-Analysis" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="3d">
+      <div class="pj-media" id="pjm-4">
+        <div class="pj-media-slides" id="pjms-4">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(4)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(4)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-4"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,4)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(4)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">3D / Game Dev</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 04</div>
+        <h3 class="pj-title" contenteditable="true">3D Anatomy Puzzle Game</h3>
+        <p class="pj-desc" contenteditable="true">Interactive anatomy puzzle game (human pelvis) in Unity. Segmented model assembled from 5-8 randomized pieces via click-drag, with keyboard rotation. Educational gamification tool.</p>
+        <div class="pj-tech"><span class="pj-tt">Unity</span><span class="pj-tt">C#</span><span class="pj-tt">Blender</span><span class="pj-tt">3D Modeling</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Ingenious-Hub" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="3d">
+      <div class="pj-media" id="pjm-5">
+        <div class="pj-media-slides" id="pjms-5">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(5)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(5)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-5"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,5)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(5)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">3D Modeling</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 05</div>
+        <h3 class="pj-title" contenteditable="true">Endoscope Room — Full 3D Model</h3>
+        <p class="pj-desc" contenteditable="true">Complete 3D modeling of a medical endoscopy room in Blender including the endoscope instrument and full room layout with clinical-grade accuracy for visualization and simulation.</p>
+        <div class="pj-tech"><span class="pj-tt">Blender</span><span class="pj-tt">3D Modeling</span><span class="pj-tt">Medical Devices</span></div>
+        <div class="pj-links"><a href="#" target="_blank" class="pj-link">View Project</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="3d">
+      <div class="pj-media" id="pjm-6">
+        <div class="pj-media-slides" id="pjms-6">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(6)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(6)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-6"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,6)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(6)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">3D Modeling</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 06</div>
+        <h3 class="pj-title" contenteditable="true">Neuron 3D Model</h3>
+        <p class="pj-desc" contenteditable="true">Detailed neuron structure modeled in Blender — dendrites, axon, myelin sheath, and synaptic terminals. Built for computational neuroscience simulation integration at Neuromatch Academy.</p>
+        <div class="pj-tech"><span class="pj-tt">Blender</span><span class="pj-tt">3D Modeling</span><span class="pj-tt">Computational Neuroscience</span></div>
+        <div class="pj-links"><a href="https://github.com/MohamedBadawy19/Dynamic-Neuron-Model-Project" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="3d">
+      <div class="pj-media" id="pjm-7">
+        <div class="pj-media-slides" id="pjms-7">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(7)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(7)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-7"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,7)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(7)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">3D Modeling</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 07</div>
+        <h3 class="pj-title" contenteditable="true">Biological Scaffold — 3D Model</h3>
+        <p class="pj-desc" contenteditable="true">Porous biological scaffold structure modeled in Blender for tissue engineering visualization. Captures microarchitecture and material properties relevant to biomedical scaffold design.</p>
+        <div class="pj-tech"><span class="pj-tt">Blender</span><span class="pj-tt">3D Modeling</span><span class="pj-tt">Biomedical Engineering</span></div>
+        <div class="pj-links"><a href="#" target="_blank" class="pj-link">View Project</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="imaging">
+      <div class="pj-media" id="pjm-8">
+        <div class="pj-media-slides" id="pjms-8">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(8)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(8)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-8"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,8)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(8)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Medical Imaging</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 08</div>
+        <h3 class="pj-title" contenteditable="true">Multi-Planar Image Viewer</h3>
+        <p class="pj-desc" contenteditable="true">Three synchronized orthogonal viewports (axial, coronal, sagittal) with cine mode, brightness/contrast, cross-referencing 3D points, and VTK volume rendering.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">PyQt5</span><span class="pj-tt">VTK</span><span class="pj-tt">Medical Imaging</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Ingenious-Hub" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="imaging">
+      <div class="pj-media" id="pjm-9">
+        <div class="pj-media-slides" id="pjms-9">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(9)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(9)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-9"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,9)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(9)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Image Processing</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 09</div>
+        <h3 class="pj-title" contenteditable="true">Image Enhancer Tool</h3>
+        <p class="pj-desc" contenteditable="true">Real-time histogram updates, zooming with interpolation, noise addition (Gaussian, Salt & Pepper, Speckle), denoising filters (Median, Gaussian, Bilateral), SNR/CNR measurement tools.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">OpenCV</span><span class="pj-tt">Image Processing</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Ingenious-Hub" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai imaging">
+      <div class="pj-media" id="pjm-10">
+        <div class="pj-media-slides" id="pjms-10">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(10)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(10)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-10"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,10)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(10)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">AI / Medical</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 10</div>
+        <h3 class="pj-title" contenteditable="true">Medical Image Classification</h3>
+        <p class="pj-desc" contenteditable="true">AI model identifying major human organs (heart, brain, liver, limbs) in medical scans. Custom deep learning pipeline with TensorFlow — evaluated on accuracy, precision, recall, and F1 score.</p>
+        <div class="pj-tech"><span class="pj-tt">TensorFlow</span><span class="pj-tt">Deep Learning</span><span class="pj-tt">Medical Imaging</span><span class="pj-tt">Python</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Ingenious-Hub/tree/main/Ingenious%20Hub/Medical%20Image%20Classification" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai imaging">
+      <div class="pj-media" id="pjm-11">
+        <div class="pj-media-slides" id="pjms-11">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(11)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(11)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-11"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,11)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(11)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">AI / Deep Learning</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 11</div>
+        <h3 class="pj-title" contenteditable="true">Brain Tumor Classification App</h3>
+        <p class="pj-desc" contenteditable="true">Classifies brain MRI into 4 tumor categories. Fine-tuned MobileNetV2 with full ML pipeline: EDA, preprocessing, augmentation, training. Deployed on Streamlit Cloud for global real-time access.</p>
+        <div class="pj-tech"><span class="pj-tt">MobileNetV2</span><span class="pj-tt">TensorFlow</span><span class="pj-tt">Streamlit</span><span class="pj-tt">OpenCV</span></div>
+        <div class="pj-links"><a href="#" target="_blank" class="pj-link">View Project</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai signal">
+      <div class="pj-media" id="pjm-12">
+        <div class="pj-media-slides" id="pjms-12">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(12)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(12)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-12"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,12)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(12)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">AI / Signal</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 12</div>
+        <h3 class="pj-title" contenteditable="true">ECG Classification — DTW</h3>
+        <p class="pj-desc" contenteditable="true">ECG preprocessing pipeline with Dynamic Time Warping for patient classification. Interactive ECG viewer, synthetic reference signal generation, and algorithm-based rhythm classification.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">DTW</span><span class="pj-tt">Signal Processing</span><span class="pj-tt">Data Viz</span></div>
+        <div class="pj-links"><a href="https://github.com/David-Amir-18/DTW-ECG" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai signal">
+      <div class="pj-media" id="pjm-13">
+        <div class="pj-media-slides" id="pjms-13">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(13)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(13)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-13"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,13)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(13)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">AI / Signal</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 13</div>
+        <h3 class="pj-title" contenteditable="true">Parkinson's Telemonitoring via Voice</h3>
+        <p class="pj-desc" contenteditable="true">Feasibility study of remote Parkinson disease monitoring using voice features. Full EDA, preprocessing, linear regression with statistical tests on audio biomarkers as a non-invasive diagnostic tool.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">Regression</span><span class="pj-tt">Signal Processing</span><span class="pj-tt">Statistics</span></div>
+        <div class="pj-links"><a href="https://colab.research.google.com/drive/1L0D07xVs_H_KHIZ6wH9lbyphtr7N1dD-" target="_blank" class="pj-link">Open in Colab</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai">
+      <div class="pj-media" id="pjm-14">
+        <div class="pj-media-slides" id="pjms-14">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(14)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(14)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-14"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,14)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(14)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Machine Learning</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 14</div>
+        <h3 class="pj-title" contenteditable="true">AutoValuate — Car Price Prediction</h3>
+        <p class="pj-desc" contenteditable="true">Predicts used car market values from 188,000+ records using LightGBM tuned with Optuna (50 trials, 5-fold CV). SHAP explainability, depreciation curves. Deployed as a live Streamlit app.</p>
+        <div class="pj-tech"><span class="pj-tt">LightGBM</span><span class="pj-tt">Optuna</span><span class="pj-tt">SHAP</span><span class="pj-tt">Streamlit</span></div>
+        <div class="pj-links"><a href="https://car-valuation-engine-pqr5cynftm27jrewuflb7h.streamlit.app/" target="_blank" class="pj-link">Live App</a><a href="https://github.com/Amatalrahman/car-valuation-engine" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai web">
+      <div class="pj-media" id="pjm-15">
+        <div class="pj-media-slides" id="pjms-15">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(15)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(15)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-15"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,15)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(15)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Data Visualization</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 15</div>
+        <h3 class="pj-title" contenteditable="true">Interactive COVID-19 Dashboard</h3>
+        <p class="pj-desc" contenteditable="true">Real-time global pandemic tracking with choropleth map (log scale), bar/line/scatter/pie charts, and country-level drill-down. Dark mode Plotly visualizations with dynamic KPI indicator cards.</p>
+        <div class="pj-tech"><span class="pj-tt">Python</span><span class="pj-tt">Dash</span><span class="pj-tt">Plotly</span><span class="pj-tt">Pandas</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Covid19-Interactive-Dashboard" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="research">
+      <div class="pj-media" id="pjm-16">
+        <div class="pj-media-slides" id="pjms-16">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(16)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(16)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-16"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,16)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(16)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Neuroscience</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 16</div>
+        <h3 class="pj-title" contenteditable="true">Perisylvian Network fMRI</h3>
+        <p class="pj-desc" contenteditable="true">HCP fMRI data analysis using graph theory and functional connectivity to compare math vs story comprehension tasks. Logistic regression brain response models at Neuromatch Academy.</p>
+        <div class="pj-tech"><span class="pj-tt">Nilearn</span><span class="pj-tt">NetworkX</span><span class="pj-tt">fMRI</span><span class="pj-tt">Graph Theory</span></div>
+        <div class="pj-links"><a href="#" target="_blank" class="pj-link">View Research</a></div>
+      </div>
+    </div>
+    <div class="pj rv" data-c="ai">
+      <div class="pj-media" id="pjm-17">
+        <div class="pj-media-slides" id="pjms-17">
+          <div class="pj-media-slide">
+            <div class="pj-media-empty"><svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.3);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span class="pj-ph-t">Add media</span></div>
+          </div>
+        </div>
+        <button class="pj-media-btn prev hide" onclick="mediaPrev(17)">&#8249;</button>
+        <button class="pj-media-btn next hide" onclick="mediaNext(17)">&#8250;</button>
+        <div class="pj-media-nav" id="pjmn-17"></div>
+        <div class="pj-media-add">
+          <label class="pj-media-add-btn">+ Image<input type="file" accept="image/*" multiple onchange="mediaAddImgs(event,17)"></label>
+          <button class="pj-media-add-btn" onclick="mediaPromptYT(17)">+ YouTube</button>
+        </div>
+        <span class="pj-cat">Computer Vision</span>
+      </div>
+      <div class="pj-body">
+        <div class="pj-n">/ 17</div>
+        <h3 class="pj-title" contenteditable="true">Football Tracking + Heatmap</h3>
+        <p class="pj-desc" contenteditable="true">YOLO-based real-time player detection and movement heatmap generation. Select any player and visualize their activity distribution across the pitch for post-match tactical analysis.</p>
+        <div class="pj-tech"><span class="pj-tt">YOLOv5</span><span class="pj-tt">OpenCV</span><span class="pj-tt">Matplotlib</span><span class="pj-tt">PyTorch</span></div>
+        <div class="pj-links"><a href="https://github.com/Amatalrahman/Ingenious-Hub" target="_blank" class="pj-link">GitHub</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-experience"></canvas></div>
+    <div><div class="sec-num">04 — Experience</div><h2 class="sec-title">Work &<br><span class="ol">Training</span></h2></div>
+    <p class="sec-desc">Internships, academic programs, and leadership roles shaping my technical foundation.</p>
+    <div class="sec-head-bg">XP</div>
+  </div>
+  <div class="tl-grid">
+    <div class="tl-years">
+      <button class="tl-yr-btn act" onclick="showTl(0,this)">2025</button>
+      <button class="tl-yr-btn" onclick="showTl(1,this)">2025</button>
+      <button class="tl-yr-btn" onclick="showTl(2,this)">2024</button>
+    </div>
+    <div class="tl-entries">
+      <div class="tl-entry act">
+        <div class="tl-date" contenteditable="true">Aug 2025 – Sep 2025</div>
+        <div class="tl-role" contenteditable="true">AI & ML Summer Training</div>
+        <div class="tl-org" contenteditable="true">NTI & NVIDIA</div>
+        <ul class="tl-buls">
+          <li contenteditable="true">120-hour accredited program — 90 hrs technical + 30 hrs professional skills</li>
+          <li contenteditable="true">Supervised & unsupervised learning, EDA, data preprocessing — NumPy, Pandas, Scikit-learn</li>
+          <li contenteditable="true">Built multiple hands-on AI/ML projects from scratch to deployment</li>
+          <li contenteditable="true">Final score: 98% — recognized by Ministry of Communications & IT</li>
+        </ul>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date" contenteditable="true">Jul 2025 – Aug 2025</div>
+        <div class="tl-role" contenteditable="true">Neuromatch Scholar</div>
+        <div class="tl-org" contenteditable="true">Neuromatch Academy — International AI & Neuroscience Program</div>
+        <ul class="tl-buls">
+          <li contenteditable="true">Selected for competitive international program under university professor supervision</li>
+          <li contenteditable="true">Daily hands-on notebooks: ML, EDA, computational neuroscience, Python data analysis</li>
+          <li contenteditable="true">Collaborated internationally on fMRI brain connectivity research project</li>
+        </ul>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-date" contenteditable="true">2024 – Present</div>
+        <div class="tl-role" contenteditable="true">VP Research & Development</div>
+        <div class="tl-org" contenteditable="true">IEEE EMBS Cairo University Student Branch</div>
+        <ul class="tl-buls">
+          <li contenteditable="true">Lead R&D initiatives within the IEEE Engineering in Medicine & Biology Society chapter</li>
+          <li contenteditable="true">Organize research activities, workshops, and collaborative engineering projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTS ══ -->
+<section id="certificates" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-certificates"></canvas></div>
+    <div><div class="sec-num">05 — Certificates</div><h2 class="sec-title">Earned<br><span class="ol">Creds</span></h2></div>
+    <p class="sec-desc">Formal recognition of continuous learning across AI, neuroscience, and engineering.</p>
+    <div class="sec-head-bg">CERTS</div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M9.5 2a4.5 4.5 0 0 1 4.5 4.5v1a4.5 4.5 0 0 1-4.5 4.5H6a4 4 0 0 1 0-8h.5"/><path d="M14.5 2A4.5 4.5 0 0 0 10 6.5v1a4.5 4.5 0 0 0 4.5 4.5H18a4 4 0 0 0 0-8h-.5"/><path d="M9 12v10M15 12v10M6 17h12"/></svg></div><div class="cert-name" contenteditable="true">Computational Neuroscience Track</div><div class="cert-meta" contenteditable="true">Neuromatch Academy · Jul 2025</div>
+      <a href="https://portal.neuromatchacademy.org/certificate/9387e93e-20f0-4673-93be-6f9d77891d19" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="cert-name" contenteditable="true">Python Programming</div><div class="cert-meta" contenteditable="true">ITI (MCIT), Mahara-Tech · Aug 2025</div>
+      <a href="https://drive.google.com/file/d/1d21pMRCCsVFGDeN3WMij9cG5Om94vo7y/view?usp=drive_link" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M9.5 2a4.5 4.5 0 0 1 4.5 4.5v1a4.5 4.5 0 0 1-4.5 4.5H6a4 4 0 0 1 0-8h.5"/><path d="M14.5 2A4.5 4.5 0 0 0 10 6.5v1a4.5 4.5 0 0 0 4.5 4.5H18a4 4 0 0 0 0-8h-.5"/><path d="M9 12v10M15 12v10M6 17h12"/></svg></div><div class="cert-name" contenteditable="true">Machine Learning & Deep Learning</div><div class="cert-meta" contenteditable="true">NTI · Sep 2025</div>
+      <a href="https://drive.google.com/file/d/1m6Jh9DKyOd3lFrM8PRNlCNlPcwIELwis/view?usp=drive_link" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="cert-name" contenteditable="true">Generative AI with AWS</div><div class="cert-meta" contenteditable="true">Udacity & Accenture · Jul 2025</div>
+      <a href="https://www.udacity.com/certificate/e/193677c4-4781-11f0-90b2-fb7680d130fa" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4"/><path d="M22 2l-6 6"/></svg></div><div class="cert-name" contenteditable="true">Getting Started with Deep Learning</div><div class="cert-meta" contenteditable="true">NVIDIA · Sep 2025</div>
+      <a href="https://learn.nvidia.com/certificates?id" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+    <div class="cert-item rv"><div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="cert-name" contenteditable="true">Frontend Development Training</div><div class="cert-meta" contenteditable="true">IEEE Cairo University · Apr 2024</div>
+      <a href="https://drive.google.com/file/d/1DOb_ZKM6a5dmj0g3eJpp4lU-9cZQQS8O/view?usp=drive_link" class="cert-link" contenteditable="false" title="Edit href in code to add your certificate URL"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> View Certificate</a></div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="sec">
+  <div class="sec-head rv">
+    <div class="sec-canvas-wrap"><canvas id="sc-contact"></canvas></div>
+    <div><div class="sec-num">06 — Contact</div><h2 class="sec-title">Let's<br><span class="ol">Build</span></h2></div>
+    <p class="sec-desc">Open to freelance in AI, data science, medical imaging & biomedical simulation.</p>
+    <div class="sec-head-bg">HI</div>
+  </div>
+  <div class="contact-inner">
+    <div class="contact-col rv">
+      <h3 class="c-head">Got a<br>project?<br><span class="red">Let's talk.</span></h3>
+      <p class="c-sub" contenteditable="true">I'm available for freelance collaborations. Whether it's an AI model, data dashboard, medical imaging tool, or CFD simulation — let's build something real.</p>
+      <div class="c-btns">
+        <a href="#" id="contact-send-btn" class="btn-r">Send Email</a>
+        <a href="https://www.linkedin.com/in/amatalrahman-sayed" target="_blank" class="btn-o">LinkedIn</a>
+      </div>
+    </div>
+    <div class="contact-col rv">
+      <ul class="clinks">
+        <li><span class="cl-type">Email</span><a href="#" id="contact-email-link">amatalrahmansayed&#8203;@gmail.com</a></li>
+        <li><span class="cl-type">Phone</span><a href="tel:01067643500" contenteditable="true">01067643500</a></li>
+        <li><span class="cl-type">LinkedIn</span><a href="https://www.linkedin.com/in/amatalrahman-sayed" target="_blank" contenteditable="true">linkedin.com/in/amatalrahman-sayed</a></li>
+        <li><span class="cl-type">GitHub</span><a href="https://github.com/Amatalrahman" target="_blank" contenteditable="true">github.com/Amatalrahman</a></li>
+        <li><span class="cl-type">Location</span><a href="#" contenteditable="true">6th of October, Giza, Egypt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="contact-giant">CONTACT</div>
+</section>
+
+<footer>
+  <span class="ft">© 2025 Amatalrahman Sayed</span>
+  <span class="ft">Cairo University · Biomedical Engineering · AI Developer</span>
+</footer>
+
+
+<!-- YouTube URL modal -->
+<div class="yt-modal" id="ytModal">
+  <div class="yt-box">
+    <h4>ADD YOUTUBE VIDEO</h4>
+    <p style="font-family:var(--M);font-size:11px;color:var(--wdim);margin-bottom:14px;line-height:1.7;letter-spacing:.04em;">
+      Paste any YouTube link — full URL, short link, or Shorts URL.
+    </p>
+    <input type="text" id="ytInput" placeholder="https://youtube.com/watch?v=..." />
+    <p style="font-family:var(--M);font-size:10px;color:var(--wdim);margin-bottom:16px;letter-spacing:.04em;opacity:.6;">
+      Works with: youtube.com/watch?v=  &nbsp;·&nbsp;  youtu.be/  &nbsp;·&nbsp;  youtube.com/shorts/
+    </p>
+    <div class="yt-box-btns">
+      <button class="btn-r" onclick="mediaConfirmYT()" style="border:none;cursor:pointer;">Add Video</button>
+      <button class="btn-o" onclick="document.getElementById('ytModal').classList.remove('open')" style="cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast"><div class="tdot"></div>Click text to edit · Click image areas to upload</div>
+
+<script>
+/* ── cursor ── */
+const cur=document.getElementById('c'),ring=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+document.querySelectorAll('a,button,[contenteditable]').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.opacity='.25';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.opacity='1';});
+});
+
+/* ── canvas ── */
+const canvas=document.getElementById('pc'),ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+resize();window.addEventListener('resize',resize);
+
+/* ── 3D-style teal triangles (like reference image) ── */
+function mkTri(){
+  const sz=28+Math.random()*90;
+  const spd=0.18+Math.random()*0.42;
+  const ang=Math.random()*Math.PI*2;
+  /* each triangle gets one of 3 size classes to vary density */
+  return {
+    x: Math.random()*innerWidth,
+    y: Math.random()*innerHeight,
+    vx: Math.cos(ang)*spd,
+    vy: Math.sin(ang)*spd,
+    rot: Math.random()*Math.PI*2,
+    vrot: (Math.random()-.5)*0.007,
+    sz,
+    /* base opacity — smaller = slightly more opaque to stay visible */
+    baseAlpha: 0.12 + Math.random()*0.22,
+    /* slow fade pulse */
+    ph: Math.random()*Math.PI*2,
+    phSpd: 0.008+Math.random()*0.012,
+  };
+}
+
+const TRIS=[];
+for(let i=0;i<22;i++) TRIS.push(mkTri());
+
+/* Draw one 3D-style triangle:
+   - dark base fill (deep teal)
+   - bright left face (cyan highlight)  
+   - thin bright stroke on two edges
+   matching the flat-3D look in the reference */
+function drawTri(t){
+  const h = t.sz * 0.866;
+  /* three vertices of equilateral triangle */
+  const ax=0,        ay=-(h*0.667);   /* top */
+  const bx=t.sz*0.5, by= h*0.333;    /* bottom-right */
+  const cx=-t.sz*0.5,cy= h*0.333;    /* bottom-left */
+
+  const pulse = 0.75+0.25*Math.sin(t.ph);
+  const a = t.baseAlpha * pulse;
+
+  ctx.save();
+  ctx.translate(t.x, t.y);
+  ctx.rotate(t.rot);
+
+  /* ── face 1: full triangle — deep teal fill ── */
+  ctx.beginPath();
+  ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.lineTo(cx,cy);
+  ctx.closePath();
+  ctx.fillStyle=`rgba(0,180,180,${a*0.35})`;
+  ctx.fill();
+
+  /* ── face 2: left half — brighter cyan (light-face illusion) ── */
+  /* midpoint of bottom edge */
+  const mx=(bx+cx)/2, my=(by+cy)/2;
+  ctx.beginPath();
+  ctx.moveTo(ax,ay); ctx.lineTo(cx,cy); ctx.lineTo(mx,my);
+  ctx.closePath();
+  ctx.fillStyle=`rgba(0,230,210,${a*0.55})`;
+  ctx.fill();
+
+  /* ── inner specular — tiny bright triangle top-left ── */
+  ctx.beginPath();
+  ctx.moveTo(ax,ay);
+  ctx.lineTo(ax+(cx-ax)*0.38, ay+(cy-ay)*0.38);
+  ctx.lineTo(ax+(mx-ax)*0.28, ay+(my-ay)*0.28);
+  ctx.closePath();
+  ctx.fillStyle=`rgba(160,255,240,${a*0.4})`;
+  ctx.fill();
+
+  /* ── edges: two bright strokes, one dim ── */
+  /* left edge — brightest */
+  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(cx,cy);
+  ctx.strokeStyle=`rgba(0,230,210,${a*1.1})`; ctx.lineWidth=0.9; ctx.stroke();
+  /* right edge — medium */
+  ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by);
+  ctx.strokeStyle=`rgba(0,180,160,${a*0.7})`; ctx.lineWidth=0.7; ctx.stroke();
+  /* bottom edge — dim */
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(bx,by);
+  ctx.strokeStyle=`rgba(0,140,130,${a*0.4})`; ctx.lineWidth=0.5; ctx.stroke();
+
+  ctx.restore();
+}
+
+/* ── tiny dots + thin connecting lines (like the reference) ── */
+const DOTS=[];
+for(let i=0;i<55;i++) DOTS.push({
+  x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+  vx:(Math.random()-.5)*0.3, vy:(Math.random()-.5)*0.3,
+  r:Math.random()<0.15 ? 2.2 : 1.0
+});
+
+(function loop(){
+  ctx.clearRect(0,0,W,H);
+
+  /* triangles */
+  TRIS.forEach(t=>{
+    t.x+=t.vx; t.y+=t.vy;
+    t.rot+=t.vrot;
+    t.ph+=t.phSpd;
+    const m=t.sz+10;
+    if(t.x<-m) t.x=W+m; else if(t.x>W+m) t.x=-m;
+    if(t.y<-m) t.y=H+m; else if(t.y>H+m) t.y=-m;
+    drawTri(t);
+  });
+
+  /* dots */
+  DOTS.forEach(d=>{
+    d.x+=d.vx; d.y+=d.vy;
+    if(d.x<0||d.x>W) d.vx*=-1;
+    if(d.y<0||d.y>H) d.vy*=-1;
+    ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(0,200,190,0.35)'; ctx.fill();
+  });
+
+  /* connecting lines between close dots */
+  for(let i=0;i<DOTS.length;i++){
+    for(let j=i+1;j<DOTS.length;j++){
+      const dx=DOTS[i].x-DOTS[j].x, dy=DOTS[i].y-DOTS[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){
+        ctx.beginPath();
+        ctx.moveTo(DOTS[i].x,DOTS[i].y);
+        ctx.lineTo(DOTS[j].x,DOTS[j].y);
+        ctx.strokeStyle=`rgba(0,200,190,${0.12*(1-d/110)})`;
+        ctx.lineWidth=0.5; ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(loop);
+})();
+
+/* ── scroll reveal ── */
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ── active nav ── */
+const secs=document.querySelectorAll('section[id]'),nls=document.querySelectorAll('.nav-tabs a');
+window.addEventListener('scroll',()=>{
+  let cur='';secs.forEach(s=>{if(scrollY>=s.offsetTop-110)cur=s.id;});
+  nls.forEach(a=>a.classList.toggle('act',a.dataset.s===cur));
+},{passive:true});
+
+/* ── project filter ── */
+function fp(cat,btn){
+  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('act'));btn.classList.add('act');
+  document.querySelectorAll('.pj').forEach(c=>c.classList.toggle('hide',cat!=='all'&&!c.dataset.c.includes(cat)));
+}
+
+/* ── timeline ── */
+function showTl(i,btn){
+  document.querySelectorAll('.tl-yr-btn').forEach((b,j)=>b.classList.toggle('act',j===i));
+  document.querySelectorAll('.tl-entry').forEach((e,j)=>e.classList.toggle('act',j===i));
+}
+
+/* ── photo upload ── */
+function upPhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{
+    const img=document.getElementById('pfImg');img.src=ev.target.result;img.style.display='block';
+    document.getElementById('pfHint').style.display='none';
+  };r.readAsDataURL(f);
+}
+
+/* ══════════════════════════════════════════
+   SECTION MINI TRIANGLE CANVASES
+══════════════════════════════════════════ */
+function initSecCanvas(id){
+  const el=document.getElementById('sc-'+id);
+  if(!el)return;
+  const ctx2=el.getContext('2d');
+  let w,h;
+  function rs(){
+    const rect=el.parentElement.getBoundingClientRect();
+    w=el.width=rect.width||el.parentElement.offsetWidth||800;
+    h=el.height=rect.height||el.parentElement.offsetHeight||200;
+  }
+  rs();
+  window.addEventListener('resize',rs);
+
+  /* generate small triangles for this section header */
+  const ST=[];
+  for(let i=0;i<10;i++){
+    const sz=18+Math.random()*55;
+    const ang=Math.random()*Math.PI*2;
+    const spd=0.12+Math.random()*0.28;
+    ST.push({x:Math.random()*800,y:Math.random()*200,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,rot:Math.random()*Math.PI*2,vrot:(Math.random()-.5)*0.008,sz,bA:0.08+Math.random()*0.18,ph:Math.random()*Math.PI*2,phS:0.01+Math.random()*0.015});
+  }
+  const SD=[];
+  for(let i=0;i<25;i++) SD.push({x:Math.random()*800,y:Math.random()*200,vx:(Math.random()-.5)*0.25,vy:(Math.random()-.5)*0.25,r:Math.random()<0.2?1.8:.7});
+
+  function drawSecTri(t){
+    const hh=t.sz*.866;
+    const ax=0,ay=-(hh*.667),bx=t.sz*.5,by=hh*.333,cx=-t.sz*.5,cy=hh*.333;
+    const pulse=.75+.25*Math.sin(t.ph);
+    const a=t.bA*pulse;
+    ctx2.save();ctx2.translate(t.x,t.y);ctx2.rotate(t.rot);
+    ctx2.beginPath();ctx2.moveTo(ax,ay);ctx2.lineTo(bx,by);ctx2.lineTo(cx,cy);ctx2.closePath();
+    ctx2.fillStyle=`rgba(0,180,180,${a*.35})`;ctx2.fill();
+    const mx2=(bx+cx)/2,my2=(by+cy)/2;
+    ctx2.beginPath();ctx2.moveTo(ax,ay);ctx2.lineTo(cx,cy);ctx2.lineTo(mx2,my2);ctx2.closePath();
+    ctx2.fillStyle=`rgba(0,230,210,${a*.55})`;ctx2.fill();
+    ctx2.beginPath();ctx2.moveTo(ax,ay);ctx2.lineTo(cx,cy);
+    ctx2.strokeStyle=`rgba(0,230,210,${a*1.1})`;ctx2.lineWidth=0.7;ctx2.stroke();
+    ctx2.beginPath();ctx2.moveTo(ax,ay);ctx2.lineTo(bx,by);
+    ctx2.strokeStyle=`rgba(0,180,160,${a*.6})`;ctx2.lineWidth=0.5;ctx2.stroke();
+    ctx2.restore();
+  }
+
+  function loopSec(){
+    ctx2.clearRect(0,0,w,h);
+    ST.forEach(t=>{
+      t.x+=t.vx;t.y+=t.vy;t.rot+=t.vrot;t.ph+=t.phS;
+      const m=t.sz+8;
+      if(t.x<-m)t.x=w+m;else if(t.x>w+m)t.x=-m;
+      if(t.y<-m)t.y=h+m;else if(t.y>h+m)t.y=-m;
+      drawSecTri(t);
+    });
+    SD.forEach(d=>{
+      d.x+=d.vx;d.y+=d.vy;
+      if(d.x<0||d.x>w)d.vx*=-1;if(d.y<0||d.y>h)d.vy*=-1;
+      ctx2.beginPath();ctx2.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx2.fillStyle='rgba(0,200,190,0.28)';ctx2.fill();
+    });
+    for(let i=0;i<SD.length;i++)for(let j=i+1;j<SD.length;j++){
+      const dx=SD[i].x-SD[j].x,dy=SD[i].y-SD[j].y,dd=Math.sqrt(dx*dx+dy*dy);
+      if(dd<80){ctx2.beginPath();ctx2.moveTo(SD[i].x,SD[i].y);ctx2.lineTo(SD[j].x,SD[j].y);
+        ctx2.strokeStyle=`rgba(0,200,190,${.1*(1-dd/80)})`;ctx2.lineWidth=.4;ctx2.stroke();}
+    }
+    requestAnimationFrame(loopSec);
+  }
+  loopSec();
+}
+['about','skills','projects','experience','certificates','contact'].forEach(initSecCanvas);
+
+/* ══════════════════════════════════════════
+   PROJECT MEDIA — FILE PATH BASED
+   ─────────────────────────────────────────
+   HOW TO ADD MEDIA:
+   1. Copy image files into: assets/images/projects/
+   2. Edit MEDIA_DATA below with file paths
+   3. For YouTube: paste the video ID (part after ?v=)
+   4. For profile photo: set PROFILE_PHOTO path
+══════════════════════════════════════════ */
+
+const MEDIA_DATA = {
+  /*
+    HOW TO ADD MEDIA:
+    1. Copy images into the matching subfolder under assets/images/projects/
+    2. Add entries here.
+       Image: {type:'img', src:'assets/images/projects/FOLDER/file.jpg'}
+       Video: {type:'yt',  vid:'YouTubeVideoID'}
+  */  
+ 
+  1:  [
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/signal.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/contsignal.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/polarsignal.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/recsignal.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/xorsignal.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/aiECG.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/micro.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/micro (1).png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/m1.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/m2.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/m3.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/m4.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/s1.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/s3.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/t2.png'},
+      {type: 'img', src: 'assets/images/projects/p01-signal-viewer/trade.png'},
+
+      
+
+  
+  ], /* Signal Viewer        -> p01-signal-viewer/        */
+  2:  [
+    {type: 'img', src: 'assets/images/projects/p02-artery-stenosis-cfd/stenosis.png'},
+    {type: 'img', src: 'assets/images/projects/p02-artery-stenosis-cfd/optimized mesh.jpeg'},
+    {type: 'img', src: 'assets/images/projects/p02-artery-stenosis-cfd/contoure1.png'},
+    {type: 'img', src: 'assets/images/projects/p02-artery-stenosis-cfd/countre 2.png'},
+
+  ], /* Artery Stenosis CFD  -> p02-artery-stenosis-cfd/  */
+  3:  [
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/image (1).png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/image (2).png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/figure 6.1.png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/figure 6.2.png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/image (3).png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/image (4).png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/image.png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/Screenshot 2025-10-22 012413.png'},
+    {type: 'img', src: 'assets/images/projects/p03-bio-flow-regime/Screenshot 2025-10-22 183953.png'},
+
+
+
+
+  ], /* Bio-Flow Regime      -> p03-bio-flow-regime/      */
+  4:  [
+    {type: 'yt',  vid: 'CvWpyIfxopA'}
+
+  ], /* Anatomy Puzzle       -> p04-anatomy-puzzle/       */
+  5:  [
+    {type: 'yt',  vid: '5B_JaEOPd7k'},
+    {type: 'yt',  vid: 'rJyyMMUwMj0'}
+  ], /* Endoscope Room       -> p05-endoscope-room/       */
+  6:  [
+    {type: 'img', src: 'assets/images/projects/p06-neuron-model/neuron.png'},
+    {type: 'img', src: 'assets/images/projects/p06-neuron-model/363_aau8302_f4.jpg'}
+
+  ], /* Neuron Model         -> p06-neuron-model/         */
+  7:  [
+    {type: 'img', src: 'assets/images/projects/p07-biological-scaffold/image.png'},
+    {type: 'img', src: 'assets/images/projects/p07-biological-scaffold/image (1).png'},
+    {type: 'img', src: 'assets/images/projects/p07-biological-scaffold/0f82815b-cc2e-41d2-add7-31903aa43471-removebg-preview.png'},
+    {type: 'img', src: 'assets/images/projects/p07-biological-scaffold/StaticFigure42-removebg-preview.png'},
+  ], /* Biological Scaffold  -> p07-biological-scaffold/  */
+  8:  [
+    {type: 'yt',  vid: '4LX4GWfoXgw'}
+  ], /* Image Viewer         -> p08-medical-image-viewer/ */
+  9:  [
+    {type: 'yt',  vid: 'E6qSfbKVNJ0'}
+
+  ], /* Image Enhancer       -> p09-image-enhancer/       */
+  10: [
+    {type: 'img', src: 'assets/images/projects/p10-medical-image-class/liver.png'},
+    {type: 'img', src: 'assets/images/projects/p10-medical-image-class/heart.png'},
+    {type: 'img', src: 'assets/images/projects/p10-medical-image-class/brain.png'},
+    {type: 'img', src: 'assets/images/projects/p10-medical-image-class/limbs.png'},
+    {type: 'yt',  vid: 'E6qSfbKVNJ0'}
+
+  ], /* Medical Img Class    -> p10-medical-image-class/  */
+  11: [
+    {type: 'yt',  vid: 'QHQtj8e2gPg'}
+
+  ], /* Brain Tumor App      -> p11-brain-tumor-app/      */
+  12: [
+    {type: 'img', src: 'assets/images/projects/p12-ecg-dtw/ecg_dtw2.png'},
+    {type: 'img', src: 'assets/images/projects/p12-ecg-dtw/ecg_dtw1.png'},
+    {type: 'img', src: 'assets/images/projects/p12-ecg-dtw/ecg_dtw3.png'},
+    {type: 'img', src: 'assets/images/projects/p12-ecg-dtw/ecg_dtw4.png'},
+  ], /* ECG DTW              -> p12-ecg-dtw/              */
+  13: [
+    {type: 'img', src: 'assets/images/projects/p13-parkinsons-voice/sound.jpg'},
+
+  ], /* Parkinsons Voice     -> p13-parkinsons-voice/     */
+  14: [
+    {type: 'img', src: 'assets/images/projects/p14-car-price-ai/price_predection.png'},
+    {type: 'img', src: 'assets/images/projects/p14-car-price-ai/more_features.png'},
+  ], /* Car Price AI         -> p14-car-price-ai/         */
+  15: [
+    {type: 'img', src: 'assets/images/projects/p15-covid-dashboard/dash_board1.PNG'},
+    {type: 'img', src: 'assets/images/projects/p15-covid-dashboard/dash_board2.PNG'},
+
+  ], /* COVID Dashboard      -> p15-covid-dashboard/      */
+  16: [
+    {type: 'img', src: 'assets/images/projects/p16-perisylvian-fmri/صورة واتساب بتاريخ 1446-12-23 في 22.02.02_4f54f94a.jpg'},
+    {type: 'img', src: 'assets/images/projects/p16-perisylvian-fmri/a_g_m.png'},
+    {type: 'img', src: 'assets/images/projects/p16-perisylvian-fmri/a_g_s.png'},
+    {type: 'img', src: 'assets/images/projects/p16-perisylvian-fmri/top_g_m.png'},
+
+  ], /* fMRI Research        -> p16-perisylvian-fmri/     */
+  17: [
+    {type: 'yt',  vid: 'TCiWAxcOS2o'}
+  ], /* Football Tracking    -> p17-football-tracking/    */
+};
+
+/* Set to 'assets/images/profile/photo.jpg' after placing your photo */
+const PROFILE_PHOTO = 'assets/images/profile/Me1.jpg';
+
+(function initProfile(){
+  if(!PROFILE_PHOTO) return;
+  const img=document.getElementById('pfImg');
+  const hint=document.getElementById('pfHint');
+  if(img&&hint){ img.src=PROFILE_PHOTO; img.style.display='block'; hint.style.display='none'; }
+})();
+
+const mediaState={};
+function getMS(id){
+  if(!mediaState[id]) mediaState[id]={slides:[...(MEDIA_DATA[id]||[])],cur:0};
+  return mediaState[id];
+}
+
+const _ISVG='<svg viewBox="0 0 24 24" style="width:28px;height:28px;stroke:rgba(240,237,232,.22);fill:none;stroke-width:1.5;stroke-linecap:round;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
+
+function mediaRender(id){
+  var ms=getMS(id);
+  var track=document.getElementById('pjms-'+id);
+  var nav=document.getElementById('pjmn-'+id);
+  var wrap=document.getElementById('pjm-'+id);
+  if(!track)return;
+  track.innerHTML='';
+  if(ms.slides.length===0){
+    track.innerHTML='<div class="pj-media-slide"><div class="pj-media-empty">'+_ISVG+'<span class="pj-ph-t">Add media — see MEDIA_DATA</span></div></div>';
+    nav.innerHTML='';
+    wrap.querySelector('.prev').classList.add('hide');
+    wrap.querySelector('.next').classList.add('hide');
+    return;
+  }
+  ms.slides.forEach(function(s){
+    var slide=document.createElement('div');
+    slide.className='pj-media-slide';
+    if(s.type==='img'){
+      var img=document.createElement('img');
+      img.src=s.src; img.alt='Project'; slide.appendChild(img);
+    } else if(s.type==='yt'){
+      /* Use thumbnail — works even when embedding is disabled */
+      slide.style.cssText='position:relative;cursor:pointer;background:#000;';
+      slide.innerHTML=(
+        '<img src="https://img.youtube.com/vi/'+s.vid+'/hqdefault.jpg"'
+        +' style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.85;">'
+        /* play button overlay */
+        +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2;">'
+        +'<div style="width:56px;height:56px;background:rgba(232,23,45,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.5);transition:transform .2s;">'
+        +'<svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#fff;margin-left:3px;"><polygon points="5,3 19,12 5,21"/></svg>'
+        +'</div>'
+        +'<span style="font-family:var(--M);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);">Watch on YouTube</span>'
+        +'</div>'
+      );
+      slide.addEventListener('mouseenter',function(){
+        this.querySelector('div>div').style.transform='scale(1.1)';
+      });
+      slide.addEventListener('mouseleave',function(){
+        this.querySelector('div>div').style.transform='scale(1)';
+      });
+      slide.addEventListener('click',(function(vid){
+        return function(){ window.open('https://www.youtube.com/watch?v='+vid,'_blank'); };
+      })(s.vid));
+    }
+    track.appendChild(slide);
+  });
+  nav.innerHTML='';
+  if(ms.slides.length>1){
+    ms.slides.forEach(function(_,i){
+      var dot=document.createElement('div');
+      dot.className='pj-media-dot'+(i===ms.cur?' on':'');
+      dot.onclick=(function(ii){return function(){mediaGo(id,ii);};})(i);
+      nav.appendChild(dot);
+    });
+  }
+  wrap.querySelector('.prev').classList.toggle('hide',ms.slides.length<=1);
+  wrap.querySelector('.next').classList.toggle('hide',ms.slides.length<=1);
+  track.style.transform='translateX(-'+(ms.cur*100)+'%)';
+}
+
+function mediaGo(id,idx){
+  var ms=getMS(id);
+  ms.cur=Math.max(0,Math.min(idx,ms.slides.length-1));
+  mediaRender(id);
+}
+function mediaPrev(id){mediaGo(id,getMS(id).cur-1);}
+function mediaNext(id){mediaGo(id,getMS(id).cur+1);}
+
+function mediaAddImgs(e,id){
+  var files=Array.from(e.target.files);
+  var ms=getMS(id);
+  var loaded=0;
+  files.forEach(function(f){
+    var r=new FileReader();
+    r.onload=function(ev){
+      ms.slides.push({type:'img',src:ev.target.result});
+      loaded++;
+      if(loaded===files.length){ms.cur=ms.slides.length-files.length;mediaRender(id);}
+      console.log('TIP: copy "'+f.name+'" to assets/images/projects/ then add:\n{type:\'img\',src:\'assets/images/projects/'+f.name+'\'}\nto MEDIA_DATA['+id+']');
+    };
+    r.readAsDataURL(f);
+  });
+}
+
+var _ytTarget=null;
+function mediaPromptYT(id){
+  _ytTarget=id;
+  document.getElementById('ytInput').value='';
+  document.getElementById('ytModal').classList.add('open');
+  setTimeout(function(){document.getElementById('ytInput').focus();},80);
+}
+function mediaConfirmYT(){
+  var val=document.getElementById('ytInput').value.trim();
+  if(!val||_ytTarget===null)return;
+  var vid=val;
+  /* extract ID from every YouTube URL format */
+  var patterns=[
+    /[?&]v=([A-Za-z0-9_-]{11})/,       /* ?v=xxxx */
+    /youtu\.be\/([A-Za-z0-9_-]{11})/,  /* youtu.be/xxxx */
+    /embed\/([A-Za-z0-9_-]{11})/,      /* /embed/xxxx */
+    /shorts\/([A-Za-z0-9_-]{11})/,     /* /shorts/xxxx */
+    /^([A-Za-z0-9_-]{11})$/            /* bare ID */
+  ];
+  for(var i=0;i<patterns.length;i++){
+    var m=val.match(patterns[i]);
+    if(m){vid=m[1];break;}
+  }
+  if(vid.length===11){
+    var ms=getMS(_ytTarget);
+    ms.slides.push({type:'yt',vid:vid});
+    ms.cur=ms.slides.length-1;
+    mediaRender(_ytTarget);
+    console.log('To make permanent, add to MEDIA_DATA['+_ytTarget+']: {type:\'yt\',vid:\''+vid+'\'}');
+  } else {
+    alert('Could not extract a valid YouTube video ID.\nPaste the full YouTube URL or just the 11-character video ID.');
+    return;
+  }
+  document.getElementById('ytModal').classList.remove('open');
+  _ytTarget=null;
+}
+/* backdrop click closes, but clicks INSIDE the box do not */
+document.getElementById('ytModal').addEventListener('click',function(e){
+  if(e.target===this) this.classList.remove('open');
+});
+document.querySelector('.yt-box').addEventListener('click',function(e){
+  e.stopPropagation();
+});
+document.getElementById('ytInput').addEventListener('keydown',function(e){
+  if(e.key==='Enter'){e.preventDefault();mediaConfirmYT();}
+  if(e.key==='Escape') document.getElementById('ytModal').classList.remove('open');
+});
+
+/* ── email links — built at runtime so Cloudflare cannot obfuscate ── */
+(function(){
+  var u='amatalrahmansayed';
+  var d='gmail.com';
+  var full=u+'@'+d;
+  var mailto='mailto:'+full;
+
+  var hire=document.getElementById('nav-hire-btn');
+  if(hire) hire.href=mailto;
+
+  var send=document.getElementById('contact-send-btn');
+  if(send) send.href=mailto;
+
+  var clink=document.getElementById('contact-email-link');
+  if(clink){ clink.href=mailto; clink.textContent=full; }
+
+  var aEmail=document.getElementById('about-email');
+  if(aEmail) aEmail.textContent=full;
+})();
+
+/* init all media on load */
+for(var _i=1;_i<=17;_i++){mediaRender(_i);}
+</script>
+</body>
+</html>
